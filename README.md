@@ -21,7 +21,17 @@ Some websites disable scrolling to prevent users from bypassing certain content 
 
 2. **Create a New Script**:
    - Open your userscript manager and create a new script.
-   - Copy and paste the following code into the script editor.
+   - Copy and paste the code into the script editor.
+  
+3.    Save and Enable the Script:
+        Save the script and ensure it is enabled in your userscript manager.
+
+Contributing
+
+If you encounter any issues or have suggestions for improvements, please open an issue or submit a pull request.
+License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ```javascript
 // ==UserScript==
