@@ -35,8 +35,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ```javascript
 // ==UserScript==
-// @name         Force Scrollbar 
-// @version      0.1
+// @name         Force Scrollbar
+// @version      0.2
 // @description  Force the scrollbar to be visible if none exists on sites that disable it
 // @author       StonyBaboon
 // @match        *://*/*
@@ -46,6 +46,27 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 (function() {
     'use strict';
 
+    // List of sites with infinite scroll
+    const infiniteScrollSites = [
+        'facebook.com',
+        'twitter.com',
+        'instagram.com',
+        'youtube.com',
+        'reddit.com',
+        'tumblr.com',
+        'pinterest.com',
+        'linkedin.com',
+        'tiktok.com',
+        'chatgpt.com',
+        'quora.com'
+
+    ];
+
+    // Function to check if the current site is in the list of infinite scroll sites
+    function isInfiniteScrollSite() {
+        return infiniteScrollSites.some(site => window.location.href.includes(site));
+    }
+
     // Function to check if a scrollbar is present
     function isScrollbarPresent() {
         return document.documentElement.scrollHeight > document.documentElement.clientHeight;
@@ -54,7 +75,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
     // Function to enable scrolling if no scrollbar is present
     function enableScrolling() {
         // Check if a scrollbar is already present
-        if (isScrollbarPresent()) {
+        if (isScrollbarPresent() || isInfiniteScrollSite()) {
             return;
         }
 
@@ -86,3 +107,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
     document.addEventListener('DOMNodeInserted', enableScrolling);
     window.addEventListener('resize', enableScrolling);
 })();
+
